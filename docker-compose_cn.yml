@@ -1,0 +1,40 @@
+version: "3"
+
+services:
+    nginx:
+        image: registry.cn-shenzhen.aliyuncs.com/yansongda/nginx
+        ports:
+            - "80:80"
+        volumes:
+            - ./data/www:/www
+        links:
+            - php
+        depends_on:
+            - php
+    php:
+        image: registry.cn-shenzhen.aliyuncs.com/yansongda/php7-fpm
+        volumes:
+            - ./data/www:/www
+        expose:
+            - "9000"
+        depends_on:
+            - mongo
+            - redis
+            - memcached
+    mongo:
+        image: mongo
+        volumes:
+            - ./data/mongo/db:/data/db
+            - ./data/mongo/configdb:/data/configdb
+        expose:
+            - "27017"
+    redis:
+        image: redis
+        volumes:
+            - ./data/redis:/data
+        expose:
+            - "6379"
+    memcached:
+        image: memcached
+        expose:
+            - "11211"

@@ -1,7 +1,9 @@
 # docker-compose-LNMongoP
-docker-compose with latest php-fpm,nginx,redis,memcached,mongodb
+Docker-compose with latest php-fpm,nginx,redis,memcached,mongodb
 
 This repo is associated with [docker-php7-fpm](https://github.com/yansongda/docker-php7-fpm) and [docker-nginx](https://github.com/yansongda/docker-nginx)
+
+If you are looking for LNMP, please go to [docker-compose-LNMP](https://github.com/yansongda/docker-compose-LNMP)
 
 ## php-fpm
 

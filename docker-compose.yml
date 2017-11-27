@@ -6,7 +6,7 @@ services:
         ports:
             - "80:80"
         volumes:
-            - ./data/www:/www
+            - ./www:/www
         links:
             - php
         depends_on:
@@ -14,7 +14,7 @@ services:
     php:
         image: yansongda/docker-php7-fpm
         volumes:
-            - ./data/www:/www
+            - ./www:/www
         expose:
             - "9000"
         depends_on:

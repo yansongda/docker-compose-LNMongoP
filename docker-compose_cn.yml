@@ -15,7 +15,7 @@ services:
     php:
         image: registry.cn-shenzhen.aliyuncs.com/yansongda/php7-fpm
         volumes:
-            - ./data/www:/www
+            - ./www:/www
         expose:
             - "9000"
         depends_on:

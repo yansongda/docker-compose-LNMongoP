@@ -8,14 +8,16 @@ services:
         volumes:
             - ./sites:/etc/nginx/conf.d
             - ./www:/www
-        links:
-            - php
+        networks:
+            - lnmongop
         depends_on:
             - php
     php:
         image: registry.cn-shenzhen.aliyuncs.com/yansongda/php7-fpm
         volumes:
             - ./www:/www
+        networks:
+            - lnmongop
         expose:
             - "9000"
         depends_on:
@@ -27,15 +29,24 @@ services:
         volumes:
             - ./data/mongo/db:/data/db
             - ./data/mongo/configdb:/data/configdb
+        networks:
+            - lnmongop
         expose:
             - "27017"
     redis:
         image: redis
         volumes:
             - ./data/redis:/data
+        networks:
+            - lnmongop
         expose:
             - "6379"
     memcached:
         image: memcached
+        networks:
+            - lnmongop
         expose:
             - "11211"
+
+networks:
+    lnmongop:

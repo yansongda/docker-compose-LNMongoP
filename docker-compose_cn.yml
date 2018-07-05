@@ -27,8 +27,7 @@ services:
     mongo:
         image: mongo
         volumes:
-            - ./data/mongo/db:/data/db
-            - ./data/mongo/configdb:/data/configdb
+            - ./data/mongo:/data
         environment:
             MONGO_INITDB_ROOT_USERNAME: root
             MONGO_INITDB_ROOT_PASSWORD: root
@@ -50,6 +49,12 @@ services:
             - lnmongop
         expose:
             - "11211"
+    tools:
+        image: registry.cn-shenzhen.aliyuncs.com/yansongda/tools
+        volumes:
+            - ./www:/www
+        networks:
+            - lnmongop
 
 networks:
     lnmongop:
